@@ -15,7 +15,7 @@ public class TicketCategoryController {
 
     @GetMapping("/active")
     public List<TicketCategory> getActiveCategories() {
-        return service.findAll();
+        return service.findAllActiveCategories();
     }
 
     @GetMapping("/{id}")
