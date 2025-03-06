@@ -4,32 +4,28 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.util.Date;
+import java.time.Instant;
 
 @Entity
 @Data
-@Table(name = "m_ticket_category")  // Ensure table name matches DB schema
+@Table(name = "m_ticket_category")
+@EntityListeners(AuditingEntityListener.class)
 public class TicketCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
     private String name;
-
-    private boolean disable;
+    private boolean disable = false;
 
     @CreatedDate
     @Column(updatable = false, columnDefinition = "timestamp default current_timestamp")
-    private Date createdDate;
+    private Instant created_date;
 
     @LastModifiedDate
     @Column(columnDefinition = "timestamp default current_timestamp on update current_timestamp")
-    private Date updatedDate;
+    private Instant updated_date;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
-
