@@ -1,5 +1,4 @@
 package com.pancabudi.ticketing.category;
-
 import com.pancabudi.common.common.misc.BaseRepository;
 import org.springframework.stereotype.Repository;
 
